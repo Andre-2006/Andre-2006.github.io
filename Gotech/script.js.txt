@@ -1,0 +1,741 @@
+// Serviços disponíveis
+const services = [
+    {
+        id: 'encanador',
+        name: '🚰 Encanador',
+        emoji: '🚰',
+        image: 'https://images.unsplash.com/photo-1584622614875-2953067881c7?w=400&h=400&fit=crop',
+        description: 'Profissionais para instalação e manutenção de encanamento'
+    },
+    {
+        id: 'eletricista',
+        name: '⚡ Eletricista',
+        emoji: '⚡',
+        image: 'https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=400&h=400&fit=crop',
+        description: 'Especialistas em instalações e reparos elétricos'
+    },
+    {
+        id: 'pintor',
+        name: '🎨 Pintor',
+        emoji: '🎨',
+        image: 'https://images.unsplash.com/photo-1584611223722-9a9b86b481c0?w=400&h=400&fit=crop',
+        description: 'Profissionais de pintura e acabamento'
+    },
+    {
+        id: 'confeiteiro',
+        name: '🍰 Confeiteiro',
+        emoji: '🍰',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop',
+        description: 'Confeiteiros para eventos e celebrações'
+    },
+    {
+        id: 'fotografo',
+        name: '📸 Fotógrafo',
+        emoji: '📸',
+        image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=400&fit=crop',
+        description: 'Fotógrafos profissionais para seus momentos especiais'
+    },
+    {
+        id: 'designer',
+        name: '💻 Designer',
+        emoji: '💻',
+        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop',
+        description: 'Designers criativos para seus projetos'
+    },
+    {
+        id: 'mecanico',
+        name: '🔧 Mecânico',
+        emoji: '🔧',
+        image: 'https://images.unsplash.com/photo-1487573883260-228e8e46da4a?w=400&h=400&fit=crop',
+        description: 'Mecânicos especializados em manutenção veicular'
+    }
+];
+
+// Dados dos profissionais
+let professionals = [
+    {
+        id: 1,
+        name: 'Profissional 1',
+        category: 'encanador',
+        description: 'Profissional qualificado com 15 anos de experiência',
+        whatsapp: '(11) 98765-4321',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1507892552021-b8c8c1e96f31?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente A', rating: 5, comment: 'Excelente trabalho! Recomendo.' }
+        ]
+    },
+    {
+        id: 2,
+        name: 'Profissional 2',
+        category: 'eletricista',
+        description: 'Eletricista certificado com especialidade em instalações',
+        whatsapp: '(11) 99876-5432',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente B', rating: 5, comment: 'Muito profissional e pontual.' },
+            { author: 'Cliente C', rating: 4, comment: 'Bom trabalho, preço justo.' }
+        ]
+    },
+    {
+        id: 3,
+        name: 'Profissional 3',
+        category: 'pintor',
+        description: 'Pintor com acabamento impecável em todos os projetos',
+        whatsapp: '(11) 99654-3210',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop',
+        reviews: []
+    },
+    {
+        id: 4,
+        name: 'Profissional 4',
+        category: 'confeiteiro',
+        description: 'Especialista em bolos personalizados e decorações criativas',
+        whatsapp: '(11) 99123-4567',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente D', rating: 5, comment: 'Bolos deliciosos e lindos!' }
+        ]
+    },
+    {
+        id: 5,
+        name: 'Profissional 5',
+        category: 'fotografo',
+        description: 'Fotógrafo profissional para todos os tipos de eventos',
+        whatsapp: '(11) 98765-4321',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente E', rating: 5, comment: 'Fotos incríveis, muito atencioso!' },
+            { author: 'Cliente F', rating: 5, comment: 'Superou expectativas.' }
+        ]
+    },
+    {
+        id: 6,
+        name: 'Profissional 6',
+        category: 'designer',
+        description: 'Designer criativa com foco em branding e identidade visual',
+        whatsapp: '(11) 99234-5678',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente G', rating: 4, comment: 'Ótimo trabalho criativo.' }
+        ]
+    },
+    {
+        id: 7,
+        name: 'Profissional 7',
+        category: 'mecanico',
+        description: 'Mecânico especializado em manutenção preventiva',
+        whatsapp: '(11) 97654-3210',
+        city: 'São Paulo',
+        photo: 'https://images.unsplash.com/photo-1507892552021-b8c8c1e96f31?w=400&h=300&fit=crop',
+        reviews: [
+            { author: 'Cliente H', rating: 5, comment: 'Rápido e eficiente!' }
+        ]
+    }
+];
+
+let currentCategory = null;
+let currentRatingProfessional = null;
+let currentRating = 0;
+let photoDataUrl = null;
+
+// ============================================
+// NAVEGAÇÃO
+// ============================================
+
+function showHome() {
+    hideAllSections();
+    document.getElementById('secHome').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+function showServicos() {
+    hideAllSections();
+    document.getElementById('secServicos').style.display = 'block';
+    renderServices();
+    window.scrollTo(0, 0);
+}
+
+function showCadastro() {
+    hideAllSections();
+    document.getElementById('secCadastro').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+function goHome() {
+    showHome();
+}
+
+function hideAllSections() {
+    document.getElementById('secHome').style.display = 'none';
+    document.getElementById('secServicos').style.display = 'none';
+    document.getElementById('secProfissionais').style.display = 'none';
+    document.getElementById('secCadastro').style.display = 'none';
+}
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadDataFromStorage();
+    setupForm();
+    setupPhotoUpload();
+    setupSearch();
+});
+
+// ============================================
+// LOCALSTORAGE
+// ============================================
+
+function loadDataFromStorage() {
+    const saved = localStorage.getItem('professionals');
+    if (saved) {
+        professionals = JSON.parse(saved);
+    }
+}
+
+function saveDataToStorage() {
+    localStorage.setItem('professionals', JSON.stringify(professionals));
+}
+
+// ============================================
+// SERVIÇOS
+// ============================================
+
+function renderServices() {
+    const grid = document.getElementById('servicesGrid');
+    grid.innerHTML = '';
+    
+    services.forEach(service => {
+        const count = professionals.filter(p => p.category === service.id).length;
+        
+        const card = document.createElement('div');
+        card.className = 'service-card';
+        card.onclick = () => openServiceCategory(service.id, service.name);
+        
+        card.innerHTML = `
+            <img src="${service.image}" alt="${service.name}" class="service-image">
+            <div class="service-name">${service.name}</div>
+            <div class="service-count">${count} profissional${count !== 1 ? 'is' : ''}</div>
+        `;
+        
+        grid.appendChild(card);
+    });
+}
+
+function openServiceCategory(categoryId, categoryName) {
+    currentCategory = categoryId;
+    document.getElementById('categoryTitle').textContent = categoryName;
+    
+    const service = services.find(s => s.id === categoryId);
+    document.getElementById('categoryDescription').textContent = service.description;
+    
+    hideAllSections();
+    document.getElementById('secProfissionais').style.display = 'block';
+    renderCategoryProfessionals();
+    document.getElementById('searchInput').value = '';
+    window.scrollTo(0, 0);
+}
+
+// ============================================
+// PROFISSIONAIS
+// ============================================
+
+function renderCategoryProfessionals() {
+    const grid = document.getElementById('professionalsGrid');
+    grid.innerHTML = '';
+    
+    let filtered = professionals.filter(p => p.category === currentCategory);
+    
+    // Ordenar por melhor avaliação
+    filtered.sort((a, b) => {
+        const avgA = a.reviews.length > 0 ? a.reviews.reduce((sum, r) => sum + r.rating, 0) / a.reviews.length : 0;
+        const avgB = b.reviews.length > 0 ? b.reviews.reduce((sum, r) => sum + r.rating, 0) / b.reviews.length : 0;
+        return avgB - avgA;
+    });
+    
+    // Aplicar busca
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    if (search) {
+        filtered = filtered.filter(p => 
+            p.name.toLowerCase().includes(search) || 
+            p.description.toLowerCase().includes(search)
+        );
+    }
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 40px;">Nenhum profissional encontrado.</p>';
+        return;
+    }
+    
+    filtered.forEach(prof => {
+        const card = document.createElement('div');
+        card.className = 'professional-card';
+        
+        const avgRating = prof.reviews.length > 0 
+            ? (prof.reviews.reduce((sum, r) => sum + r.rating, 0) / prof.reviews.length).toFixed(1)
+            : 'Sem avaliações';
+        
+        const ratingText = prof.reviews.length > 0 
+            ? `⭐ ${avgRating} (${prof.reviews.length} ${prof.reviews.length === 1 ? 'avaliação' : 'avaliações'})`
+            : 'Sem avaliações ainda';
+        
+        card.innerHTML = `
+            <img src="${prof.photo}" alt="${prof.name}" class="card-image">
+            <div class="card-content">
+                <span class="card-category">${prof.category}</span>
+                <h3 class="card-name">${prof.name}</h3>
+                <p class="card-city">📍 ${prof.city}</p>
+                <p class="card-description">${prof.description}</p>
+                <div class="card-rating">${ratingText}</div>
+                
+                <div class="card-reviews" id="reviews-${prof.id}">
+                    ${prof.reviews.map(review => `
+                        <div class="review-item">
+                            <div class="review-author">${review.author}</div>
+                            <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
+                            <div class="review-text">${review.comment}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                ${prof.reviews.length > 0 ? `
+                    <button class="card-reviews-toggle" onclick="toggleReviews(${prof.id})">Ver Avaliações</button>
+                ` : ''}
+                
+                <div class="card-footer">
+                    <button class="card-whatsapp" onclick="openWhatsApp('${prof.whatsapp}', '${prof.name}')">💬 WhatsApp</button>
+                    <button class="card-rate-btn" onclick="openReviewModal(${prof.id}, '${prof.name}')">⭐ Avaliar</button>
+                </div>
+            </div>
+        `;
+        
+        grid.appendChild(card);
+    });
+}
+
+function toggleReviews(profId) {
+    const reviewsDiv = document.getElementById(`reviews-${profId}`);
+    const button = event.target;
+    
+    reviewsDiv.classList.toggle('expanded');
+    button.textContent = reviewsDiv.classList.contains('expanded') ? 'Ocultar Avaliações' : 'Ver Avaliações';
+}
+
+function openWhatsApp(whatsapp, name) {
+    const message = `Olá ${name}, gostaria de conhecer mais sobre seus serviços!`;
+    const whatsappNumber = whatsapp.replace(/[^\d]/g, '');
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            renderCategoryProfessionals();
+        });
+    }
+}
+
+// ============================================
+// AVALIAÇÕES
+// ============================================
+
+function openReviewModal(profId, profName) {
+    currentRatingProfessional = profId;
+    currentRating = 0;
+    
+    document.getElementById('reviewModal').style.display = 'block';
+    document.getElementById('professionalNameReview').textContent = `Avaliar: ${profName}`;
+    document.getElementById('ratingText').textContent = 'Clique nas estrelas para avaliar';
+    document.getElementById('reviewerName').value = '';
+    document.getElementById('reviewComment').value = '';
+    
+    resetStars();
+}
+
+function closeReviewModal() {
+    document.getElementById('reviewModal').style.display = 'none';
+}
+
+function setRating(rating) {
+    currentRating = rating;
+    updateStars();
+    document.getElementById('ratingText').textContent = `Você selecionou ${rating} estrela${rating > 1 ? 's' : ''}`;
+}
+
+function updateStars() {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        if (index < currentRating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+}
+
+function resetStars() {
+    document.querySelectorAll('.star').forEach(star => {
+        star.classList.remove('active');
+    });
+}
+
+function submitReview() {
+    const name = document.getElementById('reviewerName').value.trim();
+    const comment = document.getElementById('reviewComment').value.trim();
+    
+    if (!name) {
+        alert('Por favor, digite seu nome');
+        return;
+    }
+    
+    if (currentRating === 0) {
+        alert('Por favor, selecione uma classificação');
+        return;
+    }
+    
+    if (!comment) {
+        alert('Por favor, deixe um comentário');
+        return;
+    }
+    
+    const prof = professionals.find(p => p.id === currentRatingProfessional);
+    if (prof) {
+        prof.reviews.push({
+            author: name,
+            rating: currentRating,
+            comment: comment
+        });
+        
+        saveDataToStorage();
+        renderCategoryProfessionals();
+        closeReviewModal();
+        alert('Avaliação enviada com sucesso! Obrigado!');
+    }
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('reviewModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// ============================================
+// UPLOAD DE FOTO
+// ============================================
+
+function setupPhotoUpload() {
+    const photoUploadArea = document.getElementById('photoUploadArea');
+    const photoInput = document.getElementById('photo');
+    const photoUploadButtons = document.getElementById('photoUploadButtons');
+    
+    if (!photoUploadArea) return;
+    
+    // Botão Câmera
+    const cameraBtn = document.createElement('button');
+    cameraBtn.type = 'button';
+    cameraBtn.textContent = '📷 Tirar Foto';
+    cameraBtn.addEventListener('click', () => accessCamera());
+    
+    // Botão Galeria
+    const galleryBtn = document.createElement('button');
+    galleryBtn.type = 'button';
+    galleryBtn.textContent = '🖼️ Galeria';
+    galleryBtn.addEventListener('click', () => photoInput.click());
+    
+    photoUploadButtons.appendChild(cameraBtn);
+    photoUploadButtons.appendChild(galleryBtn);
+    
+    // Clique para galeria
+    photoUploadArea.addEventListener('click', () => photoInput.click());
+    
+    // Drag and drop
+    photoUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        photoUploadArea.style.borderColor = 'var(--primary-color)';
+        photoUploadArea.style.background = 'rgba(99, 102, 241, 0.1)';
+    });
+    
+    photoUploadArea.addEventListener('dragleave', () => {
+        photoUploadArea.style.borderColor = 'var(--border-color)';
+        photoUploadArea.style.background = 'var(--light-bg)';
+    });
+    
+    photoUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        photoUploadArea.style.borderColor = 'var(--border-color)';
+        photoUploadArea.style.background = 'var(--light-bg)';
+        
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            photoInput.files = files;
+            handlePhotoSelect();
+        }
+    });
+    
+    photoInput.addEventListener('change', handlePhotoSelect);
+}
+
+function accessCamera() {
+    navigator.mediaDevices.getUserMedia({ 
+        video: { facingMode: 'user' },
+        audio: false 
+    }).then(stream => {
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.setAttribute('autoplay', true);
+        video.setAttribute('playsinline', true);
+        video.style.cssText = `
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            margin: 10px 0;
+        `;
+        
+        const cameraModal = document.createElement('div');
+        cameraModal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        `;
+        
+        const content = document.createElement('div');
+        content.style.cssText = `
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+        `;
+        
+        const title = document.createElement('h3');
+        title.textContent = 'Tirar Foto';
+        title.style.cssText = `
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--text-dark);
+        `;
+        
+        const canvas = document.createElement('canvas');
+        
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.style.cssText = `
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        `;
+        
+        const captureBtn = document.createElement('button');
+        captureBtn.textContent = '📸 Capturar';
+        captureBtn.style.cssText = `
+            flex: 1;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        `;
+        
+        captureBtn.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            photoDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            
+            const preview = document.getElementById('photoPreview');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = photoDataUrl;
+            preview.style.display = 'block';
+            
+            document.getElementById('photoError').textContent = '';
+            
+            stream.getTracks().forEach(track => track.stop());
+            document.body.removeChild(cameraModal);
+            
+            alert('Foto capturada com sucesso! ✅');
+        });
+        
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = '❌ Cancelar';
+        cancelBtn.style.cssText = `
+            flex: 1;
+            background: var(--error-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        `;
+        
+        cancelBtn.addEventListener('click', () => {
+            stream.getTracks().forEach(track => track.stop());
+            document.body.removeChild(cameraModal);
+        });
+        
+        buttonsContainer.appendChild(captureBtn);
+        buttonsContainer.appendChild(cancelBtn);
+        
+        content.appendChild(title);
+        content.appendChild(video);
+        content.appendChild(buttonsContainer);
+        cameraModal.appendChild(content);
+        document.body.appendChild(cameraModal);
+        
+        setTimeout(() => {
+            video.play();
+        }, 100);
+        
+    }).catch(err => {
+        console.error('Erro ao acessar câmera:', err);
+        
+        let mensagem = 'Erro ao acessar câmera';
+        
+        if (err.name === 'NotAllowedError') {
+            mensagem = 'Permissão de câmera foi negada. Ative nas configurações do navegador.';
+        } else if (err.name === 'NotFoundError') {
+            mensagem = 'Câmera não encontrada no dispositivo.';
+        }
+        
+        alert(mensagem);
+    });
+}
+
+function handlePhotoSelect() {
+    const photoInput = document.getElementById('photo');
+    const file = photoInput.files[0];
+    
+    if (!file) return;
+    
+    if (file.size > 5 * 1024 * 1024) {
+        alert('Arquivo muito grande! Máximo 5MB');
+        photoInput.value = '';
+        return;
+    }
+    
+    if (!file.type.startsWith('image/')) {
+        alert('Por favor, selecione uma imagem válida');
+        photoInput.value = '';
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        photoDataUrl = e.target.result;
+        
+        const preview = document.getElementById('photoPreview');
+        const previewImage = document.getElementById('previewImage');
+        
+        previewImage.src = photoDataUrl;
+        preview.style.display = 'block';
+        
+        document.getElementById('photoError').textContent = '';
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+// ============================================
+// CADASTRO
+// ============================================
+
+function setupForm() {
+    const form = document.getElementById('registrationForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const category = document.getElementById('category').value;
+        const description = document.getElementById('description').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+        const city = document.getElementById('city').value.trim();
+        
+        let valid = true;
+        
+        if (name.length < 3) {
+            document.getElementById('nameError').textContent = 'Nome deve ter no mínimo 3 caracteres';
+            valid = false;
+        } else {
+            document.getElementById('nameError').textContent = '';
+        }
+        
+        if (!category) {
+            document.getElementById('categoryError').textContent = 'Selecione uma categoria';
+            valid = false;
+        } else {
+            document.getElementById('categoryError').textContent = '';
+        }
+        
+        const whatsappRegex = /^\(\d{2}\)\s9\d{4}-\d{4}$/;
+        if (!whatsappRegex.test(whatsapp)) {
+            document.getElementById('whatsappError').textContent = 'Formato: (XX) 9XXXX-XXXX';
+            valid = false;
+        } else {
+            document.getElementById('whatsappError').textContent = '';
+        }
+        
+        if (!city) {
+            document.getElementById('cityError').textContent = 'Informe sua cidade';
+            valid = false;
+        } else {
+            document.getElementById('cityError').textContent = '';
+        }
+        
+        if (!photoDataUrl) {
+            document.getElementById('photoError').textContent = 'Selecione uma foto';
+            valid = false;
+        } else {
+            document.getElementById('photoError').textContent = '';
+        }
+        
+        if (valid) {
+            const newProfessional = {
+                id: Math.max(...professionals.map(p => p.id), 0) + 1,
+                name: name,
+                category: category,
+                description: description || 'Profissional qualificado',
+                whatsapp: whatsapp,
+                city: city,
+                photo: photoDataUrl,
+                reviews: []
+            };
+            
+            professionals.push(newProfessional);
+            saveDataToStorage();
+            
+            alert('Cadastro realizado com sucesso! 🎉');
+            form.reset();
+            photoDataUrl = null;
+            document.getElementById('photoPreview').style.display = 'none';
+            showHome();
+            renderServices();
+        }
+    });
+}

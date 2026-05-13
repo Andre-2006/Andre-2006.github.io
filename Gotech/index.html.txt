@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoTech - Guia Local de Profissionais</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo" onclick="goHome()">
+                <h1>🏢 GoTech</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showHome()">Home</a></li>
+                <li><a onclick="showServicos()">Serviços</a></li>
+                <li><a onclick="showCadastro()">Cadastro</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section class="hero" id="secHome">
+        <div class="hero-content">
+            <h1>Encontre os Melhores Profissionais da Sua Cidade</h1>
+            <p>Conecte-se com encanadores, eletricistas, pintores, confeiteiros, fotógrafos e muito mais. Tudo em um único lugar!</p>
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Profissionais trabalhando" class="hero-image">
+            <button class="btn-primary" onclick="showServicos()">Explorar Serviços</button>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS SECTION -->
+    <section class="servicos-section" id="secServicos" style="display: none;">
+        <div class="container">
+            <button class="btn-back" onclick="showHome()">← Voltar</button>
+            <h2>🔧 Escolha um Serviço</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px;">Clique em um serviço para ver os profissionais disponíveis</p>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Cards de serviços gerados pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFISSIONAIS SECTION -->
+    <section class="profissionais-section" id="secProfissionais" style="display: none;">
+        <div class="container">
+            <button class="btn-back" onclick="showServicos()">← Voltar</button>
+            <h2 id="categoryTitle"></h2>
+            <p id="categoryDescription" style="text-align: center; color: var(--text-light); margin-bottom: 30px;"></p>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Busque por nome do profissional...">
+            </div>
+
+            <div class="professionals-grid" id="professionalsGrid">
+                <!-- Cards gerados pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CADASTRO SECTION -->
+    <section class="cadastro-section" id="secCadastro" style="display: none;">
+        <div class="container">
+            <button class="btn-back" onclick="showHome()">← Voltar</button>
+            <div class="form-container">
+                <h2>📝 Cadastre-se como Profissional</h2>
+                <p>Expanda seu negócio e conecte-se com mais clientes</p>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                        <small>Mínimo 3 caracteres</small>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoria/Profissão *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Selecione uma profissão</option>
+                            <option value="encanador">🚰 Encanador</option>
+                            <option value="eletricista">⚡ Eletricista</option>
+                            <option value="pintor">🎨 Pintor</option>
+                            <option value="confeiteiro">🍰 Confeiteiro</option>
+                            <option value="fotografo">📸 Fotógrafo</option>
+                            <option value="designer">💻 Designer</option>
+                            <option value="mecanico">🔧 Mecânico</option>
+                        </select>
+                        <span class="error-message" id="categoryError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Descrição de Serviços</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Descreva seus serviços..."></textarea>
+                        <small>Máximo 200 caracteres</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+                        <small>Formato: (XX) 9XXXX-XXXX</small>
+                        <span class="error-message" id="whatsappError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Cidade *</label>
+                        <input type="text" id="city" name="city" placeholder="Sua cidade" required>
+                        <span class="error-message" id="cityError"></span>
+                    </div>
+
+                    <!-- Upload de Foto -->
+                    <div class="form-group">
+                        <label for="photo">Foto do Perfil *</label>
+                        <div class="photo-upload-buttons" id="photoUploadButtons"></div>
+                        <div class="photo-upload-area" id="photoUploadArea">
+                            <input type="file" id="photo" name="photo" accept="image/*" required style="display: none;">
+                            <div class="upload-placeholder">
+                                <div style="font-size: 40px; margin-bottom: 10px;">📷</div>
+                                <p>Clique ou arraste uma foto aqui</p>
+                                <small>PNG, JPG até 5MB</small>
+                            </div>
+                        </div>
+                        <span class="error-message" id="photoError"></span>
+                        
+                        <!-- Preview da Foto -->
+                        <div id="photoPreview" style="display: none; margin-top: 15px;">
+                            <p style="font-weight: 600; margin-bottom: 10px;">Preview:</p>
+                            <img id="previewImage" style="max-width: 200px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Avaliação -->
+    <div id="reviewModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeReviewModal()">&times;</span>
+            <h2>⭐ Avaliar Profissional</h2>
+            <p id="professionalNameReview"></p>
+            
+            <div class="rating-stars">
+                <span class="star" onclick="setRating(1)">⭐</span>
+                <span class="star" onclick="setRating(2)">⭐</span>
+                <span class="star" onclick="setRating(3)">⭐</span>
+                <span class="star" onclick="setRating(4)">⭐</span>
+                <span class="star" onclick="setRating(5)">⭐</span>
+            </div>
+            <p id="ratingText">Clique nas estrelas para avaliar</p>
+
+            <div class="form-group">
+                <label for="reviewerName">Seu Nome</label>
+                <input type="text" id="reviewerName" placeholder="Seu nome">
+            </div>
+
+            <div class="form-group">
+                <label for="reviewComment">Seu Comentário</label>
+                <textarea id="reviewComment" rows="4" placeholder="Deixe seu comentário..."></textarea>
+            </div>
+
+            <button class="btn-primary" onclick="submitReview()" style="width: 100%;">Enviar Avaliação</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 GoTech - Guia Local de Profissionais. Todos os direitos reservados.</p>
+            <p>📧 Email: <strong>contato@gotech.com</strong></p>
+            <p>🔗 Reclamações: <a href="https://www.reclameaqui.com.br" target="_blank">Clique aqui para acessar Reclame Aqui!</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
